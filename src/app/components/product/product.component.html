@@ -1,0 +1,19 @@
+<!-- ... Existing form template ... -->
+
+<!-- Display product details -->
+
+<div class="product ">
+  <div class="py-4 px-6 flex justify-between items-center flex-col mb-2 ">
+    <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2">
+    <h2 class="mb-2 text-md text-center">{{ product.title }}</h2>
+    <p>Price: <span class="font-bold">{{ product.price | currency: 'USD' }}</span></p>
+    <button class="border py-2 px-4 rounded" [ngClass]="{'bg-yellow-400': !details, 'bg-blue-400': details}"
+      (click)="details = !details">
+      {{ details ? 'Hide' : 'Show' }} Details
+    </button>
+    <div *ngIf="details">
+      <p>{{ product.description }}</p>
+    </div>
+    <button class="bg-blue" (click)=addtocart(product)>Add to cart</button>
+  </div>
+</div>
